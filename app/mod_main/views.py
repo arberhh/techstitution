@@ -13,7 +13,7 @@ def index():
 
 @mod_main.route('/login', methods=['GET'])
 def login():
-    return render_template('index.html')
+    return render_template('login.html')
 
 @mod_main.route('/<string:emri>/<string:mbiemri>', methods=['GET'])
 def test(emri, mbiemri):
