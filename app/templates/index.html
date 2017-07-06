@@ -1,19 +1,66 @@
 {% extends 'layout.html' %}
 {% block content %}
-<div class="container" style="background-color:#fff">
-    <div class="row">
-        <div class="col-xs-12 text-center">
-            <span>{{arber_txt}}</span>
+<script type="text/javascript">
+  /*  $(document).ready(function(){
+        $('.remove').click(function(){
+            var url = '/remove';
+            var report_id=this.id;
+            $.post(url,{"report_id":report_id},function(data){
+                var element='#'+report_id;
+                console.log(element);
+                $(element).parent().parent().remove();
+            });
+        });
+        $('#submit').click(function){
+          e.preventDefault();
+          //submit logic.
 
-            <p>
-                <ul>
-                    {% for emri in array%}
-                        <li>{{emri}}</li>
-                    {% endfor %}
-                </ul>
-            </p>
+          //build json data
+          var myObj = {};
+          myObj["first_name"] = "Bob";
+          myObj["last_name"] = "Smith";
+          //Do an AJAX call
+          $(document).ready(function(){
+            $("button").click(function(){
+              $.ajax({url: "demo_test.txt", success: function(result){
+                $(".remove").html(result);
+              }});
+            });
+          })
+          //add row dynamically
+        })
+    });
+    */
+</script>
 
-        </div>
+<!--
+<h2>Reports:</h2>
+
+<table class="table">
+    <thead>
+        <td>Emri</td>
+        <td>Mbiemri</td>
+        <td>Veprimet</td>
+    </thead>
+    <tbody>
+        {% for report in reports %}
+            <h1></h1>
+            <tr id="{{ report._id }}">
+                <td>{{report.name}}</td>
+                <td>{{report.last_name}}</td>
+                <td><a class="remove" href="{{url_for('main.remove',report_id=report._id)}}"><button>  Remove</button></a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<form method="POST">    Name: <input type="text" name="name" /><br />Last name: <input type="text" name="last_name"/>    <input type="submit" value="SUBMIT"></form> -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 text-center">
+      <h2>Rreth aviacionit civil</h2>
+      <p class="lead"> Autoriteti i Aviacionit Civil i Republikës së Kosovës (AAC) është themeluar me Ligjin nr. 03/L-051 për Aviacionin Civil si agjenci e pavarur rregullatore për aviacionin civil. AAC-ja është përgjegjëse për rregullimin e sigurisë së aviacionit civil dhe rregullimin ekonomik të aeroporteve dhe shërbimeve të navigacionit ajror në Republikën e Kosovës. Aktivitetet në aviacionin civil në hapësirën ajrore të Kosovës zhvillohen në përputhje me dispozitat e Ligjit për Aviacionin Civil, Konventën për Aviacionin Civil Ndërkombëtar të datës 7 dhjetor 1944 dhe Marrëveshjen për Themelimin e Zonës së Përbashkët Evropiane të Aviacionit. Kosova posedon kornizën e duhur ligjore për aviacionin dhe mbikëqyrjen e aktiviteteve në aviacion. Vazhdimisht hartohen rregullore dhe kërkesa ligjore për të përputhur legjislacionin dhe procedurat e aviacionit të Kosovës me kërkesat ndërkombëtare, siç janë Standardet dhe Praktikat e Rekomanduara të Organizatës Ndërkombëtare të Aviacionit Civil dhe veçanërisht me kuadrin ligjor të BE-së si pjesë e detyrimeve tona sipas Marrëveshjes së Zonës së Përbashkët Evropiane të Aviacionit, në të cilën Kosova është palë kontraktuese. </p>
     </div>
+  </div>
 </div>
+
 {% endblock %}

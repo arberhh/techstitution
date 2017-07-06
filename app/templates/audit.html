@@ -1,0 +1,175 @@
+{% extends 'layout.html'  %}
+{% block content %}
+<!-- HTML Form (wrapped in a .bootstrap-iso div) -->
+<div class="bootstrap-iso">
+ <div class="container-fluid">
+  <div class="row">
+   <div class="col-md-6 col-sm-6 col-xs-12">
+    <form method="post">
+     <div class="form-group ">
+      <label class="control-label" for="Reference">
+       Reference number:
+      </label>
+      <input class="form-control" id="subject" name="subject" type="text"/>
+     </div>
+     <div class="form-group ">
+      <label class="control-label " for="Audit title">
+       Audit title:
+      </label>
+      <input class="form-control" id="subject" name="subject" type="text"/>
+     </div>
+     <div class="form-group ">
+      <label class="control-label " for="select">
+       Audit Type:
+      </label>
+      <select class="select form-control" id="select" name="select">
+       <option value="Audit">
+        Audit
+       </option>
+       <option value="Inscpection">
+        Inscpection
+       </option>
+       <option value="Ad-hoc">
+        Ad-hoc inspection
+       </option>
+       <option value="follow-up">
+         Follow-up (If this is not checked, do not show 8)
+       </option>
+       <option value="change">
+        Change (If this is not checked, do not show 9)
+       </option>
+       <option value="unannounced">
+        Unannounced
+       </option>
+      </select>
+     </div>
+
+     <div class="form-group ">
+      <label class="control-label " for="date">
+      Start Date:
+      </label>
+      <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+     </div>
+     <div class="form-group ">
+      <label class="control-label " for="date">
+      End date:
+      </label>
+      <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+     </div>
+     <div class="form-group ">
+      <label class="control-label " for="subject">
+       Auditiee:
+      </label>
+      <input class="form-control" id="subject" name="subject" type="text"/>
+      </div>
+      <div class="form-group ">
+      <label class="control-label " for="subject">
+       Place:
+      </label>
+      <input class="form-control" id="subject" name="subject" type="text"/>
+      </div>
+      <div class="form-group ">
+      <label class="control-label " for="subject">
+       Follow-up reference number:
+      </label>
+      <input class="form-control" id="subject" name="subject" type="text"/>
+      </div>
+      <div class="form-group ">
+      <label class="control-label " for="subject">
+       Change reference number:
+      </label>
+      <input class="form-control" id="subject" name="subject" type="text"/>
+      </div>
+      <div class="form-group ">
+      <label class="control-label " for="subject">
+        Audit team leader:
+      </label>
+      <input class="form-control" id="subject" name="subject" type="text"/>
+      </div>
+      <div class="form-group ">
+      <label class="control-label " for="subject">
+        Audit team members:
+      </label>
+      <input class="form-control" id="subject" name="subject" type="text"/>
+      </div>
+      <div class="form-group ">
+      <label class="control-label " for="subject">
+       Auditee participants:
+      </label>
+      <input class="form-control" id="subject" name="subject" type="text"/>
+      </div>
+
+
+     <div class="form-group">
+      <div>
+       <button class="btn btn-primary " name="submit" type="submit">
+        Submit
+       </button>
+      </div>
+     </div>
+    </form>
+   </div>
+  </div>
+ </div>
+</div>
+
+<script type="text/javascript">
+
+//second form
+$(document).ready(function() {
+    var max_fields      = 10; //maximum input boxes allowed
+    var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+    var add_button      = $(".add_field_button"); //Add button ID
+
+    var x = 1; //initlal text box count
+    $(add_button).click(function(e){ //on add input button click
+        e.preventDefault();
+        if(x < max_fields){ //max input box allowed
+            x++; //text box increment
+            $(wrapper).append('<div><input type="text" name="mytext[]"/><a href="javascript:void(0)" class="remove_field">Remove</a></div>'); //add input box
+        }
+    });
+
+    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+});
+</script>
+<div class="bootstrap-iso">
+<div class="input_fields_wrap">
+    <button class="add_field_button">Add More Fields</button>
+    <div><input type="text" name="mytext[]"></div>
+</div>
+</div>
+
+<!-- third form -->
+<script type="text/javascript">
+$(document).ready(function(){
+    var maxField = 10; //Input fields increment limitation
+    var addButton = $('.add_button'); //Add button selector
+    var wrapper = $('.field_wrapper'); //Input field wrapper
+    var fieldHTML = '<div><input type="text" name="field_name[]" value=""/><a href="javascript:void(0);" class="remove_button" title="Remove field">Remove Field</a></div>'; //New input field html
+    var x = 1; //Initial field counter is 1
+    $(addButton).click(function(){ //Once add button is clicked
+        if(x < maxField){ //Check maximum number of input fields
+            x++; //Increment field counter
+            $(wrapper).append(fieldHTML); // Add field html
+        }
+    });
+    $(wrapper).on('click', '.remove_button', function(e){ //Once remove button is clicked
+        e.preventDefault();
+        $(this).parent('div').remove(); //Remove field html
+        x--; //Decrement field counter
+    });
+});
+</script>
+<form name="codexworld_frm" action="" method="post">
+  <div class="field_wrapper">
+    <div>
+        <input type="text" name="field_name[]" value=""/>
+        <a href="javascript:void(0);" class="add_button" title="Add field">Add Row</a>
+    </div>
+  </div>
+  <input type="submit" name="submit" value="SUBMIT"/>
+</form>
+{% endblock %}

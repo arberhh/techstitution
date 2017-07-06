@@ -1,12 +1,12 @@
 from flask import Flask
-
 import os
-
 import ConfigParser
-
 from logging.handlers import RotatingFileHandler
-
 from flask.ext.cors import CORS
+from flask.ext.pymongo import PyMongo
+from app.utils.mongo_utils import MongoUtils
+
+mongo=PyMongo()
 
 def create_app():
 
@@ -31,6 +31,7 @@ def create_app():
     init_modules(app)
 
     # Initialize the app to work with MongoDB
+    mongo.init_app(app,config_prefix='MONGO')
 
     return app
 
@@ -59,8 +60,8 @@ def load_config(app):
     config.read(config_filepath)
 
     app.config['SERVER_PORT'] = config.get('Application', 'SERVER_PORT')
+    app.config['MONGO_DBNAME'] = config.get('Mongo', 'DB_NAME')
 
-    
 
     # Logging path might be relative or starts from the root.
 
